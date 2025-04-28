@@ -6,7 +6,7 @@
     <title>{{ config('app.name', 'Laravel') }} - Login</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/source-sans-pro.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
     <!-- AdminLTE CSS -->
@@ -14,7 +14,7 @@
 
     <style>
         body.login-page {
-            background: url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center center fixed;
+            background: url('{{ asset('assets/images/pexels-photo-3184465.jpeg') }}') no-repeat center center fixed;
             background-size: cover;
         }
         .login-box {

@@ -8,24 +8,23 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="{{ asset('assets/fonts/figtree.css') }}" rel="stylesheet" />
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="bg-light">
-        <!-- Page Header -->
-        <header class="bg-white shadow-sm mb-4">
-            <div class="container py-4">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h3 class="fw-bold">Komunitas Belajar dan Rumah Kedua Remaja</h3>
-                        <h4 class="fw-bold">Sehat, Positif dan Berprestasi</h4>
-                    </div>
+
+        <style>
+            .sidebar {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                padding: 48px 0 0;
+                box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
                     <div>
                         @auth
                             <form method="POST" action="{{ route('logout') }}">
@@ -61,6 +60,6 @@
         </main>
 
         <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     </body>
 </html>

@@ -58,20 +58,20 @@
     <div class="mb-4 px-3">
       <h6 class="fw-bold">KEGIATAN</h6>
       <div class="d-flex flex-column gap-2">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.08.38-am.png?w=471&h=345&ssl=1" alt="Kegiatan 1" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2017/03/dsc_01091.jpg?w=241&h=160&ssl=1" alt="Kegiatan 2" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.08.57-am.png?w=241&h=181&ssl=1" alt="Kegiatan 3" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.09.16-am.png?w=334&h=253&ssl=1" alt="Kegiatan 4" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.09.53-am.png?w=378&h=253&ssl=1" alt="Kegiatan 5" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.12.17-am.png?w=260&h=154&ssl=1" alt="Kegiatan 6" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.12.33-am.png?w=260&h=195&ssl=1" alt="Kegiatan 7" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.12.51-am.png?w=452&h=353&ssl=1" alt="Kegiatan 8" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.13.20-am.png?w=335&h=225&ssl=1" alt="Kegiatan 9" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.13.52-am.png?w=377&h=225&ssl=1" alt="Kegiatan 10" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.14.04-am.png?w=263&h=199&ssl=1" alt="Kegiatan 11" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.16.29-am.png?w=263&h=197&ssl=1" alt="Kegiatan 12" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.16.41-am.png?w=263&h=196&ssl=1" alt="Kegiatan 13" class="img-fluid rounded">
-        <img src="https://i0.wp.com/studycenter.or.id/wp-content/uploads/2020/12/screen-shot-2020-12-10-at-7.20.18-am.png?w=449&h=600&ssl=1" alt="Kegiatan 14" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.08.38-am.png') }}" alt="Kegiatan 1" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/dsc_01091.jpg') }}" alt="Kegiatan 2" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.08.57-am.png') }}" alt="Kegiatan 3" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.09.16-am.png') }}" alt="Kegiatan 4" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.09.53-am.png') }}" alt="Kegiatan 5" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.12.17-am.png') }}" alt="Kegiatan 6" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.12.33-am.png') }}" alt="Kegiatan 7" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.12.51-am.png') }}" alt="Kegiatan 8" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.13.20-am.png') }}" alt="Kegiatan 9" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.13.52-am.png') }}" alt="Kegiatan 10" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.14.04-am.png') }}" alt="Kegiatan 11" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.16.29-am.png') }}" alt="Kegiatan 12" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.16.41-am.png') }}" alt="Kegiatan 13" class="img-fluid rounded">
+        <img src="{{ asset('assets/images/screen-shot-2020-12-10-at-7.20.18-am.png') }}" alt="Kegiatan 14" class="img-fluid rounded">
       </div>
     </div>
 
