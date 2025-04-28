@@ -1,17 +1,43 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Admin Dashboard')
 
 @section('content')
-<div class="container mt-5">
-    <h1>Admin Dashboard</h1>
-    <p>Welcome to the Study Center Admin Dashboard.</p>
+<div class="row">
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>{{ \App\Models\User::where('role', 'student')->count() }}</h3>
+                <p>Total Students</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>{{ \App\Models\User::where('role', 'parent')->count() }}</h3>
+                <p>Total Parents</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-users"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <ul>
-        <li><a href="#">Manage Users</a></li>
-        <li><a href="#">Manage Payment Proofs</a></li>
-        <li><a href="#">Manage Blogs</a></li>
-        <li><a href="#">Import Data (CSV/Excel)</a></li>
-        <li><a href="#">Export Reports</a></li>
-        <li><a href="#">System Settings</a></li>
-    </ul>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Recent Activities</h3>
+            </div>
+            <div class="card-body">
+                <p>Welcome to the admin dashboard! You can manage students, parents, and view system activities here.</p>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
