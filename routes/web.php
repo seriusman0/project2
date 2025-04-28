@@ -1,40 +1,45 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PaymentProofController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\PaymentProofController as PublicPaymentProofController;
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\BlogController;
 
-require __DIR__.'/auth.php';
 
-use App\Http\Controllers\PaymentProofController;
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Dashboard route
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', [PublicPaymentProofController::class, 'showForm'])->name('home');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
 
-// Blog Routes
-Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+    Route::get('/student/dashboard', function () {
+        return view('student.dashboard');
+    })->name('student.dashboard');
+
+    Route::get('/parent/dashboard', function () {
+        return view('parent.dashboard');
+    })->name('parent.dashboard');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Blog routes
 Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');
 
-Route::get('/payment-proof', [PublicPaymentProofController::class, 'showForm'])->name('payment-proof.form');
-Route::post('/payment-proof', [PublicPaymentProofController::class, 'fetchProof'])->name('payment-proof.fetch');
-Route::get('/payment-proof/{id}/detail', [PublicPaymentProofController::class, 'showDetail'])->name('payment-proof.detail');
+// Payment proof routes
+Route::post('/payment-proof/fetch', [PaymentProofController::class, 'fetchProof'])->name('payment-proof.fetch');
+Route::get('/payment-proof/{id}', [PaymentProofController::class, 'showDetail'])->name('payment-proof.detail');
 
-// Admin routes with role middleware
-Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
-    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-
-    // User management routes
-    Route::resource('users', \App\Http\Controllers\UserController::class)->names('admin.users');
-
-    // Payment proof management routes
-    Route::resource('payment-proofs', \App\Http\Controllers\AdminPaymentProofController::class)->names('admin.payment-proofs');
-
-    // Blog management routes
-    Route::resource('blogs', \App\Http\Controllers\AdminBlogController::class)->names('admin.blogs');
-});
+require __DIR__.'/auth.php';
