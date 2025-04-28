@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PaymentProofController as PublicPaymentProofController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\BlogController;
 use App\Http\Middleware\AdminMiddleware;
 
 require __DIR__.'/auth.php';
@@ -11,6 +12,10 @@ require __DIR__.'/auth.php';
 use App\Http\Controllers\PaymentProofController;
 
 Route::get('/', [PublicPaymentProofController::class, 'showForm'])->name('home');
+
+// Blog Routes
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');
 
 Route::get('/payment-proof', [PublicPaymentProofController::class, 'showForm'])->name('payment-proof.form');
 Route::post('/payment-proof', [PublicPaymentProofController::class, 'fetchProof'])->name('payment-proof.fetch');

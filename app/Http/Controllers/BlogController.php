@@ -10,9 +10,17 @@ class BlogController extends Controller
     {
         $blogs = Blog::where('status', 'published')
             ->orderByDesc('published_at')
-            ->take(5)
-            ->get();
+            ->paginate(9);
 
         return view('blogs.index', compact('blogs'));
+    }
+
+    public function show(Blog $blog)
+    {
+        if ($blog->status !== 'published') {
+            abort(404);
+        }
+
+        return view('blogs.show', compact('blog'));
     }
 }
