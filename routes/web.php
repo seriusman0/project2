@@ -1,44 +1,40 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\ParentController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    if (auth()->check()) {
-        switch (auth()->user()->role) {
-            case 'admin':
-                return redirect()->route('admin.dashboard');
-            case 'student':
-                return redirect()->route('student.dashboard');
-            case 'parent':
-                return redirect()->route('parent.dashboard');
-        }
-    }
-    return view('auth.login');
-});
-
-Route::middleware(['auth'])->group(function () {
-    // Admin routes
-    Route::middleware(['role:admin'])->group(function () {
-        Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    });
-
-    // Student routes
-    Route::middleware(['role:student'])->group(function () {
-        Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
-    });
-
-    // Parent routes
-    Route::middleware(['role:parent'])->group(function () {
-        Route::get('/parent/dashboard', [ParentController::class, 'dashboard'])->name('parent.dashboard');
-    });
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+use App\Http\Controllers\PaymentProofController as PublicPaymentProofController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\BlogController;
 
 require __DIR__.'/auth.php';
+
+use App\Http\Controllers\PaymentProofController;
+
+// Dashboard route
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('/', [PublicPaymentProofController::class, 'showForm'])->name('home');
+
+// Blog Routes
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');
+
+Route::get('/payment-proof', [PublicPaymentProofController::class, 'showForm'])->name('payment-proof.form');
+Route::post('/payment-proof', [PublicPaymentProofController::class, 'fetchProof'])->name('payment-proof.fetch');
+Route::get('/payment-proof/{id}/detail', [PublicPaymentProofController::class, 'showDetail'])->name('payment-proof.detail');
+
+// Admin routes with role middleware
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
+    // User management routes
+    Route::resource('users', \App\Http\Controllers\UserController::class)->names('admin.users');
+
+    // Payment proof management routes
+    Route::resource('payment-proofs', \App\Http\Controllers\AdminPaymentProofController::class)->names('admin.payment-proofs');
+
+    // Blog management routes
+    Route::resource('blogs', \App\Http\Controllers\AdminBlogController::class)->names('admin.blogs');
+});
